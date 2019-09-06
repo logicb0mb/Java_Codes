@@ -8,7 +8,7 @@ public class Main {
             if( (i%3 ==0) && (i%5 == 0)){
                 sum += i;
                 count++;
-                System.out.println("NUmber : " + i);
+                System.out.println("Number : " + i);
                 if(count == 5) {
                     break;
                 }
