@@ -14,6 +14,7 @@ public class Main {
             nextTerm =0;
             prevTerm =1;
             prevprevTerm = 0;
+            System.out.println("Fibonnaci Series:");
             for(int i = 0; i< num ; i++){
                 if( i == 0){
                     nextTerm =0;
