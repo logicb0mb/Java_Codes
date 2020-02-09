@@ -31,13 +31,13 @@ public class Main {
             Matcher m = p.matcher(regNo);
             boolean b = m.find();
             Double mobNum = Double.parseDouble(mobNo);
-            System.out.println(b);
+            //System.out.println(b);
             if(regNo.length() != 9){
                 throw new MyException("java.lang.IllegalArgumentException: Registration number does not contain 9 characters");
             } else if(mobNo.length() != 10){
                 throw new MyException("java.lang.IllegalArgumentException: Mobile number does not contain 10 characters");
             } else if(!b){
-                throw new MyException("java.lang.NoSuchElementException: Registration Number does not follow regex");
+                throw new MyException("java.lang.NoSuchElementException: Registration Number is Not valid");
             } else {
                 System.out.println("Valid");
             }
