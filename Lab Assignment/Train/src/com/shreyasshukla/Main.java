@@ -1,5 +1,6 @@
 package com.shreyasshukla;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 class TrainStation {
@@ -28,12 +29,24 @@ class TrainStation {
         System.out.println("Enter the travelType:");
         this.travelType = z.next();
     }
+
+    @Override
+    public String toString() {
+        return "TrainStation{" +
+                "trainNo=" + trainNo +
+                ", source='" + source + '\'' +
+                ", destination='" + destination + '\'' +
+                ", time=" + time +
+                ", travelTime=" + travelTime +
+                ", platformNo=" + platformNo +
+                ", travelType='" + travelType + '\'' +
+                '}' + "\n";
+    }
 }
 
 public class Main {
 
     public static  void searchTrainNo( int trainNoToBeSearched, TrainStation[] aob){
-
         try {
             boolean found = false;
             for(int i = 0; i< aob.length;i++){
@@ -49,6 +62,46 @@ public class Main {
             System.out.println(a);
         }
 
+    }
+
+    public static void sortTrain(TrainStation[] aob){
+        try{
+            String type;
+            Scanner inp = new Scanner(System.in);
+            type = inp.next();
+
+            if(type.equals("TM")){
+                for(int i = 0; i<aob.length;i++){
+                    for(int j = i+1; j< aob.length;j++){
+                        if(aob[i].time > aob[j].time){
+                            TrainStation temp = aob[i];
+                            aob[i] = aob[j];
+                            aob[j] = temp;
+                        }
+                    }
+                }
+                System.out.println("Sorted based on time:");
+                System.out.println(Arrays.toString(aob));
+
+            } else if(type.equals("TN")) {
+                for(int i = 0; i<aob.length;i++){
+                    for(int j = i+1; j< aob.length;j++){
+                        if(aob[i].trainNo > aob[j].trainNo){
+                            TrainStation temp = aob[i];
+                            aob[i] = aob[j];
+                            aob[j] = temp;
+                        }
+                    }
+                }
+                System.out.println("Sorted based on trainNo:");
+                System.out.println(Arrays.toString(aob));
+            } else {
+                throw new ArithmeticException();
+            }
+
+        }catch (ArithmeticException a){
+            System.out.println(a);
+        }
     }
     public static void main(String[] args) {
 	// train search and sort
@@ -67,5 +120,6 @@ public class Main {
         int trainNoToBeSearched;
         trainNoToBeSearched = sc.nextInt();
         searchTrainNo(trainNoToBeSearched, aob);
+        sortTrain(aob);
     }
 }
